@@ -120,6 +120,10 @@ function love.load()
 
     -- initialize mouse input table
     love.mouse.buttonsPressed = {}
+
+    -- limit framerate
+    min_dt = 1/60
+    next_time = love.timer.getTime() + min_dt
 end
 
 function love.resize(w, h)
@@ -155,6 +159,15 @@ function love.mouse.wasPressed(button)
 end
 
 function love.update(dt)
+    local cur_time = love.timer.getTime()
+    if cur_time < next_time then
+      return
+    end
+    next_time = cur_time + min_dt
+    if dt < min_dt then
+      dt = min_dt
+    end
+
     if scrolling then
         backgroundScroll = (backgroundScroll + BACKGROUND_SCROLL_SPEED * dt) % BACKGROUND_LOOPING_POINT
         groundScroll = (groundScroll + GROUND_SCROLL_SPEED * dt) % VIRTUAL_WIDTH
@@ -167,6 +180,7 @@ function love.update(dt)
 end
 
 function love.draw()
+
     push:start()
     
     love.graphics.draw(background, -backgroundScroll, 0)
