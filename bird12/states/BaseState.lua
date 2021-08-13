@@ -1,6 +1,6 @@
 --[[
     GD50 2018
-    Match-3 Remake
+    Flappy Bird Remake
 
     -- BaseState Class --
 
