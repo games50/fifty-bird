@@ -5,8 +5,9 @@
 -- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+local love12 = love.getVersion() and love.getVersion() >= 12
 local love11 = love.getVersion() == 11
-local getDPI = love11 and love.window.getDPIScale or love.window.getPixelScale
+local getDPI = (love11 or love12) and love.window.getDPIScale or love.window.getPixelScale
 local windowUpdateMode = love11 and love.window.updateMode or function(width, height, settings)
   local _, _, flags = love.window.getMode()
   for k, v in pairs(settings) do flags[k] = v end
