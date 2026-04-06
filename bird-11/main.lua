@@ -1,5 +1,5 @@
 --[[
-    GD50
+    CS50 2D
     Flappy Bird Remake
 
     bird-11

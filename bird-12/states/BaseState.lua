@@ -1,5 +1,5 @@
 --[[
-    GD50 2018
+    CS50 2D
     Match-3 Remake
 
     -- BaseState Class --
